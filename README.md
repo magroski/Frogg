@@ -5,7 +5,7 @@
 [![CircleCI](https://circleci.com/gh/magroski/frogg.svg?style=shield)](https://circleci.com/gh/magroski/frogg)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/magroski/frogg/blob/master/LICENSE)
 
-A library with some quality of life classes and syntactic sugar for some Phalcon Framework structures. 
+A library with some syntactic sugar for Phalcon Framework. 
 
 Authors:
 * [@magroski](https://github.com/magroski)
