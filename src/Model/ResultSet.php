@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Frogg\Model;
 
 use Frogg\Exception\InvalidAttributeException;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Frogg\Exception;
 
 class InvalidAttributeException extends \RuntimeException

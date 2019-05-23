@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Frogg;
 
 use Detection\MobileDetect;
@@ -28,8 +30,7 @@ use TypeError;
  * @property \Phalcon\Annotations\Adapter\Memory|\Phalcon\Annotations\Adapter                          $annotations
  * @property \Phalcon\Mvc\Model\Manager|\Phalcon\Mvc\Model\ManagerInterface                            $modelsManager
  * @property \Phalcon\Mvc\Model\MetaData\Memory|\Phalcon\Mvc\Model\MetadataInterface                   $modelsMetadata
- * @property \Phalcon\Mvc\Model\Transaction\Manager|\Phalcon\Mvc\Model\Transaction\ManagerInterface
- *           $transactionManager
+ * @property \Phalcon\Mvc\Model\Transaction\Manager|\Phalcon\Mvc\Model\Transaction\ManagerInterface    $transactionManager
  * @property \Phalcon\Assets\Manager                                                                   $assets
  * @property \Phalcon\Di|\Phalcon\DiInterface                                                          $di
  * @property \Phalcon\Session\Bag|\Phalcon\Session\BagInterface                                        $persistent
@@ -236,7 +237,7 @@ class Controller extends PhalconController
             throw new TypeError('Parameter ' . $name . ' is not a string : ' . $value);
         }
 
-        return (string)$value;
+        return $value;
     }
 
     public function getArrayParam(string $name, ?array $defaultValue = null) : array
@@ -287,12 +288,8 @@ class Controller extends PhalconController
 
     /**
      * Remove BOM of UTF8 string
-     *
-     * @param string $string
-     *
-     * @return string
      */
-    protected function utf8WithoutBom($string)
+    protected function utf8WithoutBom(?string $string) : ?string
     {
         if ($string === null) {
             return null;

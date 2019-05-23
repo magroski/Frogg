@@ -1,14 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Frogg;
 
-use Frogg\Crypto\WT;
 use Frogg\Exception\UnableToSaveRecord;
 use Frogg\Model\Criteria;
 use Frogg\Model\ResultSet;
 use Phalcon\Di;
 use Phalcon\DiInterface;
 use Phalcon\Mvc\Model as PhalconModel;
+use Permalink\Permalink;
+use WT\WT;
 
 /**
  * Class Model
@@ -81,9 +84,9 @@ class Model extends PhalconModel implements \JsonSerializable
      */
     public function permalinkFor(string $attribute) : string
     {
-        $tmp = new Permalink($this->$attribute);
+        $tmp = Permalink::create($this->$attribute);
 
-        return $this->getNumeration($tmp->create());
+        return $this->getNumeration($tmp);
     }
 
     /**
@@ -94,7 +97,7 @@ class Model extends PhalconModel implements \JsonSerializable
     public function permalinkForValues(array $values) : string
     {
         for ($i = 0; $i < count($values); $i++) {
-            $values[$i] = Permalink::createSlug($values[$i]);
+            $values[$i] = Permalink::create($values[$i]);
         }
         $value = implode('-', $values);
 

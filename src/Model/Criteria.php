@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Alexandre
- * Date: 29/09/2017
- * Time: 13:47
- */
+
+declare(strict_types=1);
 
 namespace Frogg\Model;
 
@@ -214,19 +210,21 @@ class Criteria extends PhalconModel\Criteria
      *
      * eg: given a criteria with an 'alreadyAddedBind' in an previously `andWhere` call. When you try:
      * $criteria->andWhere('column = :alreadyAddedBind:', ['alreadyAddedBind' => 'other value'])
-     * it will @throws DuplicatedBindException;
+     * it will @param array $bindTypes
+     * @param bool $merge
      *
-     * but if you want to reassign this bind to another value, you can skip this check using a bind type 'skipBindCheck' = true:
-     * $criteria->andWhere('column = :alreadyAddedBind:', ['alreadyAddedBind' => 'other value'], ['skipBindCheck' => true])
+     * @return PhalconModel\Criteria|void
+     * @throws DuplicatedBindException;
+     *
+     * but if you want to reassign this bind to another value, you can skip this check using a bind type
+     * 'skipBindCheck' = true:
+     * $criteria->andWhere('column = :alreadyAddedBind:', ['alreadyAddedBind' => 'other value'], ['skipBindCheck' =>
+     * true])
      *
      * I'm not proud of it, but some times we will need to skip it and we can't add more
      * parameters to this function cuz it's interfaced...
      *
      *
-     * @param array $bindTypes
-     * @param bool  $merge
-     *
-     * @return PhalconModel\Criteria|void
      */
     public function bindTypes(array $bindTypes, $merge = true)
     {

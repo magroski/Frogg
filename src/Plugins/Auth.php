@@ -1,11 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Frogg\Plugins;
 
 use Phalcon\Events\Event;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\User\Plugin;
 
+/**
+ * @property \Phalcon\Session\Adapter\Files|\Phalcon\Session\Adapter|\Phalcon\Session\AdapterInterface $session
+ */
 class Auth extends Plugin
 {
 

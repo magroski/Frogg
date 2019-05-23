@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Frogg\Services;
 
 use Phalcon\Di\FactoryDefault;
@@ -8,9 +10,6 @@ class AbstractDiBuilder extends FactoryDefault
 {
     /**
      * AbstractService constructor.
-     *
-     * @param $config
-     * @param $bugsnag
      */
     public function __construct($config, $bugsnag = null)
     {
